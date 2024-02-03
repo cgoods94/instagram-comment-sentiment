@@ -9,6 +9,11 @@ transformers = "*"
 python-dotenv = "*"
 pathlib = "*"
 typing = "*"
+pillow = "*"
+pandas = "*"
+torch = "*"
+ipython = "*"
+pyarrow = "*"
 
 [dev-packages]
 black = "*"
