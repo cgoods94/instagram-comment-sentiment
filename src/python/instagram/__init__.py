@@ -1,0 +1,1 @@
+from .extract_ig_comments import extract_comments_from_code

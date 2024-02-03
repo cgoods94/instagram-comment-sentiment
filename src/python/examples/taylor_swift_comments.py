@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 import pathlib
 import pandas as pd
 
-from extract_ig_comments import extract_comments_from_code
-from preprocess_comments import remove_urls, remove_emojis
+from instagram import extract_comments_from_code
+from preprocess_comments import remove_urls, remove_emojis, remove_user_tags
 from load_embeddings import bert_sentiment
 
 
@@ -38,6 +38,7 @@ def taylor_swift_superbowl() -> pd.DataFrame:
 
     comments_df['text'] = comments_df['text'].apply(lambda x: remove_emojis(x))
     comments_df['text'] = comments_df['text'].apply(lambda x: remove_urls(x))
+    comments_df['text'] = comments_df['text'].apply(lambda x: remove_user_tags(x))
 
     bert_comments_df = comments_df[(comments_df['text'] != '') &
                               (comments_df['text'] is not None)].copy()

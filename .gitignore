@@ -48,6 +48,7 @@ Thumbs.db
 *.mov
 *.wmv
 
-# mkdocs documentation
+# pycache folders
+__pycache__/
 
 site*/
