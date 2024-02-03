@@ -5,8 +5,8 @@ import pathlib
 import pandas as pd
 
 from instagram import extract_comments_from_code
-from preprocess_comments import remove_urls, remove_emojis, remove_user_tags
-from load_embeddings import bert_sentiment
+from preprocessing import remove_urls, remove_emojis, remove_user_tags
+from model import bert_sentiment
 
 
 def taylor_swift_superbowl() -> pd.DataFrame:
