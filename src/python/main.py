@@ -1,8 +1,7 @@
-import pandas as pd
 import os
 
-if (~(os.getcwd().endswith('src/python/'))):
-    os.chdir('src/python/')
+if ~(os.getcwd().endswith("src/python/")):
+    os.chdir("src/python/")
 
 from examples import taylor_swift_superbowl
 

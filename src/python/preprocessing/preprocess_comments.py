@@ -46,7 +46,7 @@ def remove_urls(text: str) -> str:
         r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*(),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
     )
 
-    return re.sub(url_pattern, '', text)
+    return re.sub(url_pattern, "", text)
 
 
 def remove_emojis(text: str) -> str:
@@ -58,7 +58,7 @@ def remove_emojis(text: str) -> str:
     Returns:
         the comment text with emojis removed.
     """
-        # Regex pattern for detecting emojis
+    # Regex pattern for detecting emojis
     emoji_pattern = re.compile(
         "["
         "\U0001F600-\U0001F64F"  # emoticons
@@ -70,7 +70,7 @@ def remove_emojis(text: str) -> str:
         "]+",
         flags=re.UNICODE,
     )
-    return re.sub(emoji_pattern, '', text)
+    return re.sub(emoji_pattern, "", text)
 
 
 def remove_user_tags(text: str) -> str:
@@ -78,8 +78,8 @@ def remove_user_tags(text: str) -> str:
 
     Args:
         text - the text of the Instagram comment.
-    
+
     Returns:
         the text string with user tags removed.
     """
-    return re.sub(r'@\w+', '', text)
+    return re.sub(r"@\w+", "", text)

@@ -36,12 +36,13 @@ def taylor_swift_superbowl() -> pd.DataFrame:
 
     comments_df = extract_comments_from_code(cl, media_code, 100)
 
-    comments_df['text'] = comments_df['text'].apply(lambda x: remove_emojis(x))
-    comments_df['text'] = comments_df['text'].apply(lambda x: remove_urls(x))
-    comments_df['text'] = comments_df['text'].apply(lambda x: remove_user_tags(x))
+    comments_df["text"] = comments_df["text"].apply(lambda x: remove_emojis(x))
+    comments_df["text"] = comments_df["text"].apply(lambda x: remove_urls(x))
+    comments_df["text"] = comments_df["text"].apply(lambda x: remove_user_tags(x))
 
-    bert_comments_df = comments_df[(comments_df['text'] != '') &
-                              (comments_df['text'] is not None)].copy()
+    bert_comments_df = comments_df[
+        (comments_df["text"] != "") & (comments_df["text"] is not None)
+    ].copy()
 
     nlp = bert_sentiment()
 
