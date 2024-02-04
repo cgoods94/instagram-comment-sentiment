@@ -7,7 +7,7 @@ from preprocessing import remove_urls, remove_emojis, remove_user_tags
 
 
 def download_training_comments(
-    client: Client, media_code: str, username: str, amount: int = 100
+    client: Client, username: str, amount: int = 100
 ) -> pd.DataFrame:
     """
 
