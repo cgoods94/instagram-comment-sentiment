@@ -14,6 +14,9 @@ pandas = "*"
 torch = "*"
 ipython = "*"
 pyarrow = "*"
+openpyxl = "*"
+scikit-learn = "*"
+tqdm = "*"
 
 [dev-packages]
 black = "*"

@@ -1,1 +1,1 @@
-from .bert_sentiment import bert_sentiment
+from .train_bert_sentiment import train_bert_sentiment
