@@ -60,7 +60,7 @@ Even with a small training set like the given set, it takes some time to train o
 ## Usage
 
 I've provided an example file that uses the model on a set of Instagram comments taken from an
-ESPN post about Taylor Swift flying her private jet from Japan to the Super Bowl.
+ESPN post with video of Jason Kelce's fun "elite strategy" in a Pro Bowl skills contest.
 
 You can run `src/python/main.py` for yourself to see.
 
