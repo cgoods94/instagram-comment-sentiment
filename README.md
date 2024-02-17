@@ -5,6 +5,19 @@
 This tool fine-tunes a BERT Sentiment Analyzer to assign positive, negative, or neutral sentiment to a set of Instagram comments.
 This version of the model is scoped to English-language comments, and it ignores URLs and emojis.
 
+## Installation
+
+This repository uses [pipenv](https://pipenv.pypa.io/en/latest/installation.html) for package management.
+
+Clone the repository and install everything using pipenv:
+
+```bash
+git clone https://github.com/cgoods94/instagram-comment-sentiment.git
+cd instagram-comment-sentiment
+pipenv shell
+pipenv install
+```
+
 ## Setup
 
 To get the main.py file up and running, you'll need to add the following to your cloned repository.
@@ -17,6 +30,8 @@ In the root directory of this repository, add a `.env` file with the following i
 INSTAGRAM_USER=<your_instagram_username>
 INSTAGRAM_PASS=<your_instagram_password>
 ```
+
+You'll want to exit pipenv and re-enter with `pipenv shell` to see the .env changes take place.
 
 ### 2. Preparing For and Training the Model and Tokenizer
 
