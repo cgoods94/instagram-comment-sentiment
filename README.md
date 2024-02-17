@@ -75,3 +75,8 @@ training set. Instagram does not love accounts created for purposes like this, a
 
 On my MacBook Pro, this takes 30-40 min to train on the 1k examples I have. The code is set up for
 GPU usage, but I do not currently have access to a GPU. I'd be open to exploring affordable options there.
+
+## Contact
+
+If you have any questions or want to connect with me on other data science projects/opportunities,
+you can reach me at cgoods94@gmail.com
