@@ -1,4 +1,4 @@
-from transformers import BertTokenizer, BertForSequenceClassification
+from transformers import BertForSequenceClassification
 from transformers import AdamW
 from transformers import get_linear_schedule_with_warmup
 
@@ -15,7 +15,6 @@ from typing import List
 
 def train_bert_sentiment(
     training_data: TensorDataset,
-    tokenizer: BertTokenizer,
     train_size: float = 0.8,
     epochs: int = 4,
     device_type: str = "cpu",
@@ -25,8 +24,6 @@ def train_bert_sentiment(
     Args:
         training_data (TensorDataset): the TensorDataset created by
             gather_and_clean_training_set.
-        tokenizer (BertTokenizer): the BERT tokenizer related to
-            the training data
         train_size (float): the proportion of training data used
             for training (the rest is used as holdout)
         epochs (int): number of training epochs
@@ -36,9 +33,8 @@ def train_bert_sentiment(
         the loss values from each epoch of training.
 
     Side Effects:
-        Saves the model and the tokenizer to the respective folders
-            in the model sub-directory so they can be rendered again
-            without re-training.
+        Saves the model to the respective folders in the model sub-directory
+        so they can be rendered again without re-training.
     """
     model_name = "bert-base-uncased"
     model = BertForSequenceClassification.from_pretrained(
@@ -74,9 +70,11 @@ def train_bert_sentiment(
     loss_values = []
 
     for epoch_i in range(0, epochs):
+
         # ========================================
         #               Training
         # ========================================
+
         model.train()  # Put the model into training mode
 
         total_loss = 0
@@ -142,7 +140,6 @@ def train_bert_sentiment(
             b_labels = b_labels.to(device)
 
             with torch.no_grad():
-                # Instructs PyTorch to not compute or store gradients, saving memory and speeding up validation
 
                 outputs = model(
                     b_input_ids,
@@ -168,15 +165,13 @@ def train_bert_sentiment(
         print(f"Validation Loss: {avg_val_loss}")
 
         model_save_path = "model/models/"
-        tokenizer_save_path = "model/tokenizers/"
 
         model.config.id2label = {0: "negative", 1: "neutral", 2: "positive"}
         model.config.label2id = {"negative": 0, "neutral": 1, "positive": 2}
 
         model.save_pretrained(model_save_path)
-        tokenizer.save_pretrained(tokenizer_save_path)
 
-        return loss_values
+    return loss_values
 
 
 def _flat_accuracy(preds, labels):

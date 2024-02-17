@@ -8,18 +8,23 @@ from torch.utils.data import TensorDataset
 
 
 def gather_and_clean_training_set(
-    fp: str = "../../data/training_comments_done.xlsx",
+    training_fp: str = "../../data/training_comments_done.xlsx",
+    tokenizer_save_path: str = "model/tokenizers/",
 ) -> TensorDataset:
     """Pulls in the labeled training set from an Excel file
     and converts it into a TensorDataset for BERT to use.
 
     Args:
-        - fp (str): the filepath to the training data Excel file.
+        training_fp (str): the filepath to the training data Excel file.
+        tokenzier_save_path (str): the save location for the tokenizer
 
     Returns:
         a torch TensorDataset for use in training the model.
+
+    Side Effects:
+        Saves the tokenizer to the specified filepath.
     """
-    training_done = pd.read_excel(fp)
+    training_done = pd.read_excel(training_fp)
     training_done = training_done[["text", "label"]].copy()
 
     training_done["text"] = training_done["text"].fillna("").astype(str)
@@ -33,6 +38,8 @@ def gather_and_clean_training_set(
     input_ids = encoded_data["input_ids"]
     attention_masks = encoded_data["attention_mask"]
     labels = tensor(training_done["label"].values)
+
+    tokenizer.save_pretrained(tokenizer_save_path)
 
     dataset = TensorDataset(input_ids, attention_masks, labels)
 

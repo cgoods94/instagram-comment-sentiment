@@ -59,7 +59,7 @@ def media_code_comment_sentiments(
 
     # Extract the numeric part from the label and map it
     bert_comments_df["sentiment_label"] = bert_comments_df["sentiment"].apply(
-        lambda x: x['label']
+        lambda x: x["label"]
     )
 
     # Extract the score
@@ -67,4 +67,4 @@ def media_code_comment_sentiments(
         lambda x: x["score"]
     )
 
-    return bert_comments_df.sort_values('sentiment_score', ascending=False)
+    return bert_comments_df.sort_values("sentiment_score", ascending=False)
